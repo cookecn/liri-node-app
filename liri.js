@@ -4,6 +4,8 @@ require('dotenv').config();
 //ALLOW PAGE TO ACCESS MODULE PACKAGE 'request'
 var axios = require("axios");
 
+var request = require("request");
+
 //ALLOW PAGE TO ACCESS MODULE PACKAGE 'moment'
 var moment = require("moment");
 
@@ -18,7 +20,7 @@ var Spotify = require("node-spotify-api");
 //SET UP spotify API KEY VIA 'keys.js' file
 var spotify = new Spotify(keys.spotify);
 //SET UP OMDB API KEYS VIA 'keys.js' file
-var omdb = (keys.omdb);
+//var omdb = (keys.omdb);
 //SET UP bandsInTown API KEYS VIA 'keys.js' file
 
 var userInput = process.argv[2];
@@ -30,7 +32,7 @@ function userCommand(userInput, userQuery) {
         case "concert-this":
             concertThis();
             break;
-        case "spotify-this":
+        case "spotify-this-song":
             spotifyThisSong();
             break;
         case "movie-this":
@@ -79,65 +81,65 @@ function concertThis() {
 }
 
 
-
-
 //FUNCTION to utilize spotify api via node using userQuery
 function spotifyThisSong() {
     console.log("Searching for... " + userQuery);
 
-    if (!userQuery) {
-        userQuery = "the sign ace of base"
-    };
+    results = [];
+
 
     spotify.search({
         type: 'track',
         query: userQuery,
         limit: 1
-    }), function (error, data) {
-        if (error) {
-            return console.log("Error Occured " + error);
-        }
-
-        let spotifyArr = data.tracks.items;
-
-        for (i = 0; i < spotifyArr.length; i++) {
-            console.log("Artist " + data.tracks.items[i].album.artists[0].name, 
-            "Song: " + data.tracks.items[i].name,
-            "Spotify Link " + data.tracks.items[i].external_urls.spotify, 
-            "Album: " + data.tracks.items[i].album.name);
-        };
-    };
-}
+    }).then(function(spotRes) {
+        spotRes.tracks.items.forEach(function(ea) {
+            results.push({artist: ea.artists[0].name, song: ea.name, preview: ea.external_urls.spotify, album: ea.album.name});
+        })
+        console.log(results);
+    }).catch(function(error) {
+        console.log(error);
+        throw error;
+    })
+};
 
 //FUNCTION using the omdb api and keys.js apiKey. JSON parse the body, and then check for errors, if not - console.log reponse.
 function movieThis() {
-    console.log("Searching for " + userQuery);
 
-    if(!userQuery) {
-        userQuery = "mr nobody";
-    };
+    var movieName = userQuery;
+
+    var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&tomatoes=true&apikey=trilogy";
+    console.log("Searching for " + movieName);
+
 //FILL IN API KEY HERE
-    axios.get("http://www.omdb.api.com/?t=" + userQuery + "&apikey=" + omdb +"", function(error, response, body) {
-        var userMovie = JSON.parse(body);
+    request(queryUrl, function(error, response, body) {
 
-        var ratingsArr = userMovie.Ratings;
-        if (ratingsArr.length > 2) {
-
+        if (!movieName) {
+            movieName = "mr nobody";
+            console.log("If you haven't watched 'Mr. Nobody,' then you should: http://www.imdb.com/title/tt0485947/");
+            console.log("It's on Netflix!");
+            return;
         }
 
         if (!error && response.statusCode === 200) {
-            console.log("Title: " + userMovie.Title,  
-            "Released: " + userMovie.Year, 
-            "IMDB Rating: " + userMovie.imdbRating, 
-            "Rotten Tomatoes Rating: " + userMovie.Ratings[1].Value, 
-            "Country: " + userMovie.Country, 
-            "Language: " + userMovie.Language, 
-            "Plot: " + userMovie.Plot,
-            "Cast: " + userMovie.Actors);
+            var body = JSON.parse(body);
+            console.log
+            (
+            "Title: " + body.Title, "\n\n",
+            "Release Year: " + body.Year, "\n\n",
+            "IMDB Rating: " + body.imdbRating, "\n\n",
+            "Rotten Tomatoes Rating: " + body.Ratings[2].Value, "\n\n",
+            "Country: " + body.Country, "\n\n",
+            "Language: " + body.Language, "\n\n",
+            "Plot: " + body.Plot, "\n\n",
+            "Actors: " + body.Actors, "\n"
+            );
+
+            
         } else {
-            return console.log("Movie not able to be found");
-        };
-    });
+            console.log("Error: " + error);
+        }
+    })
 }
 
 //FUNCTION to take everything from the random.txt page and display it's information in the console. EX: 
