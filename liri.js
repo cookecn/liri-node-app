@@ -19,9 +19,7 @@ var Spotify = require("node-spotify-api");
 
 //SET UP spotify API KEY VIA 'keys.js' file
 var spotify = new Spotify(keys.spotify);
-//SET UP OMDB API KEYS VIA 'keys.js' file
-//var omdb = (keys.omdb);
-//SET UP bandsInTown API KEYS VIA 'keys.js' file
+
 
 var userInput = process.argv[2];
 var userQuery = process.argv.slice(3).join(" ");
