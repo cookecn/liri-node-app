@@ -25,7 +25,7 @@ Homework: Liri Node Application
 * After the console appears, you will be able to start your search by starting with "node", as seen below.
 
 
-<img src="https://github.com/cookecn/liri-node-app/tree/master/images/step1.png" width="200" height="300"/>
+<img src="https://github.com/cookecn/liri-node-app/tree/master/images/step1.png" width="600" height="300"/>
 
 
 #
