@@ -24,7 +24,9 @@ Homework: Liri Node Application
 * To begin, open your console inside Visual Studio Code with (CTRL + ALT + `).
 * After the console appears, you will be able to start your search by starting with "node", as seen below.
 
-![liri.js Step-1](https://github.com/cookecn/liri-node-app/tree/master/images/step1.png =150x)
+
+<img src="https://github.com/cookecn/liri-node-app/tree/master/images/step1.png" width="200" height="300"/>
+
 
 #
 
