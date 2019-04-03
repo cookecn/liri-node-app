@@ -81,7 +81,14 @@ function concertThis() {
 
 //FUNCTION to utilize spotify api via node using userQuery
 function spotifyThisSong() {
-    console.log("Searching for... " + userQuery);
+    
+    if (!userQuery) {
+        userQuery = "The Sign of Ace";
+        console.log("Searching for... " + "the sign by ace of base");
+    } else {
+        console.log("Searching for... " + userQuery);
+    }
+
 
     results = [];
 
