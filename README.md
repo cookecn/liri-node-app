@@ -15,7 +15,13 @@ Homework: Liri Node Application
 
 * https://drive.google.com/file/d/1t5kuJV0MzIlZCA-OOkJeyhBGq9qRNcmB/view
 
-# Screenshots are in the images folder!
+# Step-by-Step!
+
+* If you want to embed images, this is how you do it:
+
+![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
+
+
 
 # About
 The liri-node-app uses node to take user input and return information from one of three node-api calls. The three apis are spotify, omdb, and bandsintown. If the user says "concert-this", the switch statement will find the function listed under that input and prompt the node application to run that funciton. If "spotify-this-song" is called, spotify will return information on whatever song name you input. If "movie-this", omdb will return movie information for whatever movie you call. 
