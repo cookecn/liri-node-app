@@ -1,26 +1,74 @@
 # liri-node-app
 Homework: Liri Node Application
 
+#
+
 # Contributors
 *@cookecn
 
+#
+
 # Technology
 *Node, Javascript
+
+#
 
 # Github Links to projects:
 
 * https://cookecn.github.io/updatedPortfolio/
 
-# Link to Google Doc Video of Assignment
-
-* https://drive.google.com/file/d/1t5kuJV0MzIlZCA-OOkJeyhBGq9qRNcmB/view
+#
 
 # Step-by-Step!
 
-* If you want to embed images, this is how you do it:
+* To begin, open your console inside Visual Studio Code with (CTRL + ALT + `).
+* After the console appears, you will be able to start your search by starting with "node", as seen below.
 
-![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
+![liri.js Step-1](https://cookecn.github.com/images/step1.png)
 
+#
+
+*After you type node, type in "liri.js", so that the node console knows to use the liri.js file. 
+
+![liri.js Step-2](https://cookecn.github.com/images/step2.png)
+
+#
+
+*Now, you will have 4 options to choose from, with each option granting you different results. The first: "concert-this" will search the bandsintown api and give you information on the next concert that the band is playing.
+
+![concert-this](https://cookecn.github.com/images/concert-this.png)
+
+#
+
+*The second option is "spotify-this-song", which will search the spotify API for a song and return information about said song. If no userinput is detected after "spotify-this-song" the command will show you information on "The Sign" by Ace of Base.
+
+![Ace of Base](https://cookecn.github.com/images/aceofbase.png)
+
+#
+
+![spotify-this-song + (song_name)](https://cookecn.github.com/images/spotify-this-song.png)
+
+#
+
+*The third option is to utilize "movie-this" to find relevant information on your searched movie! If no movie is searched for, the console will get mad and tell you to watch Mr. Nobody! Like this...
+
+![Mr. Nobody](https://cookecn.github.com/images/Mr.Nobody.png)
+
+#
+
+![Movie-This + (movie_name)](https://cookecn.github.com/images/movie-this.png)
+
+#
+
+*Last but not least, "do-this", which tells the console to pull the information from a seperate file and use that information to search the spotify api. Like so...
+
+![Seperate File](https://cookecn.github.com/images/randomtxt.png)
+
+#
+
+![do-this](https://cookecn.github.com/images/do-this.png)
+
+#
 
 
 # About
